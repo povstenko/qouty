@@ -1,0 +1,175 @@
+body {
+    background-color: white;
+}
+
+
+.clickable {
+    cursor: pointer;
+}
+
+
+/* preloader */
+
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /*background: #DDDCD6;*/
+    z-index: 10000;
+}
+
+
+/* back to top button */
+
+#back-to-top-button {
+    display: inline-block;
+    background-color: #715142;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+#back-to-top-button::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f106";
+    font-weight: 900;
+    font-size: 2em;
+    line-height: 50px;
+    color: white;
+}
+
+#back-to-top-button:hover {
+    cursor: pointer;
+    background-color: #5c4235;
+}
+
+#back-to-top-button:active {
+    background-color: #555;
+}
+
+#back-to-top-button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* google material design icons */
+
+.material-icons {
+    vertical-align: middle;
+    line-height: 0 !important;
+    position: relative;
+    top: -3px;
+}
+
+
+/* Rules for sizing the icon. */
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+
+/* Rules for using icons as black on a light background. */
+
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+
+/* Rules for using icons as white on a dark background. */
+
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+
+/* pagination */
+
+.pagination>li>a {
+    background-color: white;
+    color: #1a5784;
+    border-color: #d4dadf;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    color: #1a5784;
+    background-color: #e8eaed;
+    border-color: #d4dadf;
+}
+
+.pagination>.disabled>a,
+.pagination>.disabled>span {
+    background-color: #dee2e6 !important;
+    border-color: #d4dadf !important;
+}
+
+.pagination>.active>span {
+    color: white;
+    background-color: #1a5784 !important;
+    border: solid 1px #1a5784 !important;
+}
+
+
+/* responsive */
+
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+.input-checkbox {
+    -webkit-appearance: none;
+    border-radius: .25rem;
+}
+
+@media (max-width: 768px) {
+    .border-sm-0 {
+        border: 0 !important;
+        border-radius: 0 !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .border-xs-0 {
+        border: 0 !important;
+        border-radius: 0 !important;
+    }
+    .btn-xs-block {
+        width: 100%;
+        display: block;
+    }
+}
