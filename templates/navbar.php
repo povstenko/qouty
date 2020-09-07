@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top py-3 navbar-dark">
 	<div class="container">
-		<a class="navbar-brand" href="#">Quoty</a>
+		<a class="navbar-brand" href="#">Quotty</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
