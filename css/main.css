@@ -1,201 +1,191 @@
 body {
-    background-color: black;
-
+  background-color: black;
 }
 
 .clickable {
-    cursor: pointer;
+  cursor: pointer;
 }
-
 
 /* navbar */
 
 .navbar {
-    transition: all 0.4s;
+  transition: all 0.4s;
 }
 
 .navbar .nav-link {
-    color: #fff;
+  color: #fff;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 .navbar .navbar-brand {
-    color: #fff;
+  color: #fff;
 }
-
 
 /* Change navbar styling on scroll */
 .navbar.active {
-    background: #fff;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar.active .nav-link {
-    color: #555;
+  color: #555;
 }
 
 .navbar.active .nav-link:hover,
 .navbar.active .nav-link:focus {
-    color: #555;
-    text-decoration: none;
+  color: #555;
+  text-decoration: none;
 }
 
 .navbar.active .navbar-brand {
-    color: #555;
+  color: #555;
 }
-
 
 /* Change navbar styling on small viewports */
 @media (max-width: 991.98px) {
-    .navbar {
-        background: #fff;
-    }
+  .navbar {
+    background: #fff;
+  }
 
-    .navbar .navbar-brand, .navbar .nav-link {
-        color: #555;
-    }
+  .navbar .navbar-brand,
+  .navbar .nav-link {
+    color: #555;
+  }
 }
 
 /* preloader */
 
 .preloader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    /*background: #DDDCD6;*/
-    z-index: 10000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /*background: #DDDCD6;*/
+  z-index: 10000;
 }
-
 
 /* back to top button */
 
 #back-to-top-button {
-    display: inline-block;
-    background-color: black;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    border-radius: 4px;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    transition: background-color .3s, opacity .5s, visibility .5s;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1000;
+  display: inline-block;
+  background-color: black;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
 }
 
 #back-to-top-button::after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f106";
-    font-weight: 900;
-    font-size: 2em;
-    line-height: 50px;
-    color: white;
+  font-family: "Font Awesome 5 Free";
+  content: "\f106";
+  font-weight: 900;
+  font-size: 2em;
+  line-height: 50px;
+  color: white;
 }
 
 #back-to-top-button:hover {
-    cursor: pointer;
-    background-color: black;
+  cursor: pointer;
+  background-color: #f9c61c;
 }
 
 #back-to-top-button:active {
-    background-color: #555;
+  background-color: #555;
 }
 
 #back-to-top-button.show {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
-
 
 /* google material design icons */
 
 .material-icons {
-    vertical-align: middle;
-    line-height: 0 !important;
-    position: relative;
-    top: -3px;
+  vertical-align: middle;
+  line-height: 0 !important;
+  position: relative;
+  top: -3px;
 }
-
 
 /* Rules for sizing the icon. */
 
 .material-icons.md-18 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .material-icons.md-24 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .material-icons.md-36 {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .material-icons.md-48 {
-    font-size: 48px;
+  font-size: 48px;
 }
-
 
 /* Rules for using icons as black on a light background. */
 
 .material-icons.md-dark {
-    color: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.54);
 }
 
 .material-icons.md-dark.md-inactive {
-    color: rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.26);
 }
-
 
 /* Rules for using icons as white on a dark background. */
 
 .material-icons.md-light {
-    color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);
 }
 
 .material-icons.md-light.md-inactive {
-    color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.3);
 }
-
 
 /* pagination */
 
-.pagination>li>a {
-    background-color: white;
-    color: #1a5784;
-    border-color: #d4dadf;
+.pagination > li > a {
+  background-color: white;
+  color: #1a5784;
+  border-color: #d4dadf;
 }
 
-.pagination>li>a:focus,
-.pagination>li>a:hover,
-.pagination>li>span:focus,
-.pagination>li>span:hover {
-    color: #1a5784;
-    background-color: #e8eaed;
-    border-color: #d4dadf;
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+  color: #1a5784;
+  background-color: #e8eaed;
+  border-color: #d4dadf;
 }
 
-.pagination>.disabled>a,
-.pagination>.disabled>span {
-    background-color: #dee2e6 !important;
-    border-color: #d4dadf !important;
+.pagination > .disabled > a,
+.pagination > .disabled > span {
+  background-color: #dee2e6 !important;
+  border-color: #d4dadf !important;
 }
 
-.pagination>.active>span {
-    color: white;
-    background-color: #1a5784 !important;
-    border: solid 1px #1a5784 !important;
+.pagination > .active > span {
+  color: white;
+  background-color: #1a5784 !important;
+  border: solid 1px #1a5784 !important;
 }
-
 
 /* responsive */
 
@@ -205,42 +195,107 @@ input[type="text"],
 input[type="button"],
 input[type="submit"],
 .input-checkbox {
-    -webkit-appearance: none;
-    border-radius: .25rem;
+  -webkit-appearance: none;
+  border-radius: 0.25rem;
 }
 
 @media (max-width: 768px) {
-    .border-sm-0 {
-        border: 0 !important;
-        border-radius: 0 !important;
-    }
+  .border-sm-0 {
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
 }
 
 @media (max-width: 425px) {
-    .border-xs-0 {
-        border: 0 !important;
-        border-radius: 0 !important;
-    }
-    .btn-xs-block {
-        width: 100%;
-        display: block;
-    }
+  .border-xs-0 {
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+  .btn-xs-block {
+    width: 100%;
+    display: block;
+  }
+}
+
+.my-btn-white {
+  background-color: white;
+  color: black !important;
+}
+
+.my-btn-white:hover {
+  background-color: black;
+  border-color: white;
+  color: white !important;
+}
+
+.my-btn-outline-white {
+  border-color: white;
+  color: white !important;
+}
+
+.my-btn-outline-white:hover {
+  background-color: white;
+  color: black !important;
 }
 
 .my-btn-outline-black {
-    border-color: white;
-    color: white !important;
+  border-color: black;
+  color: black !important;
 }
 
 .my-btn-outline-black:hover {
-    background-color: white;
-    color: black !important;
+  background-color: black;
+  color: white !important;
+}
+
+.my-btn-outline-yellow {
+  border-color: #f9c61c;
+  color: #f9c61c !important;
+}
+
+.my-btn-outline-yellow:hover {
+  background-color: #f9c61c;
+  color: black !important;
 }
 
 .my-bg-black {
-    background-color: black;
+  background-color: black;
 }
 
 .my-bg-gray {
-    background-color: #E9ECEF;
+  background-color: #e9ecef;
+}
+
+.my-text-yellow {
+  color: #f9c61c;
+}
+
+.my-link {
+	color: #f9c61c;
+}
+.my-link:hover {
+	color: #f9c61c;
+}
+.my-link:active {
+	color: #f9c61c;
+}
+.my-link:visited {
+	color: #f9c61c;
+}
+
+.my-link-no-style {
+	color: white;
+	text-decoration: none;
+}
+.my-link-no-style:hover {
+	color: white;
+	text-decoration: none;
+}
+.my-link-no-style:active {
+	color: white;
+	text-decoration: none;
+}
+.my-link-no-style:visited {
+	color: white;
+	text-decoration: none;
 }

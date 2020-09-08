@@ -2,6 +2,6 @@
 require "./vendor/redbeanphp/rb-mysql.php";
 require "functions.php";
 
-R::setup("mysql:host=host;dbname=db", 'username', 'password');
+R::setup("mysql:host=localhost;dbname=quotty_db", 'root', 'root');
 
 session_start();

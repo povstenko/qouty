@@ -38,7 +38,7 @@ include_once 'php/functions.php';
 	<!-- Navigation -->
 	<?php include_once 'templates/navbar.php'; ?>
 
-	<!-- Navigation -->
+	<!-- Quote of the day header -->
 	<?php include_once 'templates/header.php'; ?>
 
 	<!-- Page Content -->
@@ -356,6 +356,8 @@ include_once 'php/functions.php';
 					</blockquote>
 				</div>
 			</div>
+
+			
 	</section>
 
 	<!-- Footer -->
