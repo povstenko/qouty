@@ -5,25 +5,23 @@ include_once 'php/functions.php';
 $data = $_POST;
 $errors = array();
 
-if (isset($data['do_login'])) {
-    $user = $data['email'];
+if (isset($data['do_signin'])) {
+    $user = get_user_by_email($data['email']);
 
     if ($user) {
-        if (password_verify($data['password'], $user->password)) {
-            if ($user['token'] == null) {
-                $_SESSION['logged_user'] = $user;
-                $user->is_online = 1;
-                R::store($user);
-                
-                echo '<script type="text/javascript">location.reload(true);</script>';
-            } else {
-                $errors[] = "Ваш акаунт не активовано. Перевірте вашу електронну пошту.";
-            }
+        console_log($user->password);
+        console_log($data['password']);
+        // if (password_verify($data['password'], $user->password)) {
+        if ($data['password'] == $user->password) {
+            $_SESSION['logged_user'] = $user;
+            R::store($user);
+
+            header('location: index.php');
         } else {
-            $errors[] = "Ви ввели неправильний пароль.";
+            $errors[] = "Incorrect password.";
         }
     } else {
-        $errors[] = "Ви ввели неправильний логін або email.";
+        $errors[] = "Incorrect login or password.";
     }
 }
 
@@ -60,8 +58,10 @@ if (isset($data['do_login'])) {
     <?php include_once 'templates/preloader.html'; ?>
 
     <!-- Page Content -->
-    <form class="form-signin">
-        <a href="index.php" class="my-link-no-style"><h1 class="header-3 mb-5" href="index.php">Quotty</h1></a>
+    <form class="form form-signin" action="signin.php" method="POST">
+        <a href="index.php" class="my-link-no-style">
+            <h1 class="header-3 mb-5" href="index.php">Quotty</h1>
+        </a>
         <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>

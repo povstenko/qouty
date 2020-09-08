@@ -22,9 +22,13 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Profile</a>
 				</li>
-				<li class="nav-item">
-					<button class="btn btn-sm my-btn-outline-white my-2 ml-3 my-sm-0 text-white" type="submit">Log Out</button>
-				</li>
+				<?php if (isset($_SESSION['logged_user'])) : ?>
+					<li class="nav-item">
+						<button class="btn btn-sm my-btn-outline-white my-2 ml-3 my-sm-0 text-white" href="logout.php">Log Out</button>
+					</li>
+				<?php else : ?>
+
+				<?php endif; ?>
 			</ul>
 		</div>
 

@@ -4,13 +4,13 @@ include_once 'php/functions.php';
 
 if (!array_key_exists('logged_user', $_SESSION)) {
     $data = $_POST;
-    $errors = array();
 
     if (isset($data['do_signup'])) {
         $user = R::dispense('users');
         $user->email = $data['email'];
-        $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
-        
+        // $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+        $user->password = $data['password'];
+        $user->token = generate_random_string(80);
 
         R::store($user);
 
