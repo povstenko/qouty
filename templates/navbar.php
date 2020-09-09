@@ -7,20 +7,20 @@
 
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="navbar-nav ml-auto small">
-				<li class="nav-item active">
+				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "index.php") ? "active" : "" ?>">
 					<a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Collections</a>
+				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "collections.php") ? "active" : "" ?>">
+					<a class="nav-link" href="<?= (isset($_SESSION['logged_user'])) ? "collections.php" : "signin.php" ?>">Collections</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Post</a>
+				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "create.php") ? "active" : "" ?>">
+					<a class="nav-link" href="<?= (isset($_SESSION['logged_user'])) ? "create.php" : "signin.php" ?>">Create</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Saved</a>
+				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "saved.php") ? "active" : "" ?>">
+					<a class="nav-link" href="<?= (isset($_SESSION['logged_user'])) ? "saved.php" : "signin.php" ?>">Saved</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Profile</a>
+				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "profile.php") ? "active" : "" ?>">
+					<a class="nav-link" href="<?= (isset($_SESSION['logged_user'])) ? "profile.php" : "signin.php" ?>">Profile</a>
 				</li>
 				<?php if (isset($_SESSION['logged_user'])) : ?>
 					<li class="nav-item">
