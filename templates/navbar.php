@@ -24,10 +24,12 @@
 				</li>
 				<?php if (isset($_SESSION['logged_user'])) : ?>
 					<li class="nav-item">
-						<button class="btn btn-sm my-btn-outline-white my-2 ml-3 my-sm-0 text-white" href="logout.php">Log Out</button>
+						<a class="btn btn-sm my-btn-outline-white my-2 ml-3 my-sm-0 text-white" href="php/logout.php">Log Out</a>
 					</li>
 				<?php else : ?>
-
+					<li class="nav-item">
+						<a class="btn btn-sm my-btn-outline-white my-2 ml-3 my-sm-0 text-white" href="signin.php">Sign In</a>
+					</li>
 				<?php endif; ?>
 			</ul>
 		</div>
