@@ -55,6 +55,16 @@ function get_user_by_email($email)
     return R::findOne('users', 'email = ?', array($email));
 }
 
+function get_all_quotes()
+{
+    return R::getAll("SELECT * FROM quotes");
+}
+
+function get_quotes_limit($start, $qty)
+{
+    return R::getAll("SELECT * FROM announcements LIMIT " . $start . ", " . $qty);
+}
+
 // ==============================================================
 //
 // FUNCTIONS
