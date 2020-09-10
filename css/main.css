@@ -111,6 +111,35 @@ body {
   visibility: visible;
 }
 
+/* pagination */
+
+.pagination>li>a {
+  background-color: white;
+  color: #1a5784;
+  border-color: #d4dadf;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+  color: #1a5784;
+  background-color: #e8eaed;
+  border-color: #d4dadf;
+}
+
+.pagination>.disabled>a,
+.pagination>.disabled>span {
+  background-color: #dee2e6 !important;
+  border-color: #d4dadf !important;
+}
+
+.pagination>.active>span {
+  color: white;
+  background-color: #1a5784 !important;
+  border: solid 1px #1a5784 !important;
+}
+
 /* google material design icons */
 
 .material-icons {
@@ -162,7 +191,7 @@ body {
 
 .pagination > li > a {
   background-color: white;
-  color: #1a5784;
+  color: black;
   border-color: #d4dadf;
 }
 
@@ -170,7 +199,7 @@ body {
 .pagination > li > a:hover,
 .pagination > li > span:focus,
 .pagination > li > span:hover {
-  color: #1a5784;
+  color: black;
   background-color: #e8eaed;
   border-color: #d4dadf;
 }
@@ -183,8 +212,8 @@ body {
 
 .pagination > .active > span {
   color: white;
-  background-color: #1a5784 !important;
-  border: solid 1px #1a5784 !important;
+  background-color: black !important;
+  border: solid 1px black !important;
 }
 
 /* responsive */

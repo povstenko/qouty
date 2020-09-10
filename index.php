@@ -75,7 +75,7 @@ $quotes = get_quotes_limit($sort_by, $order, $start, $quantity_per_page);
 		<div class="container py-5 w-75">
 			<?php if ($quotes) :
 				foreach ($quotes as $quote) : ?>
-					<div class="card border-secondary shadow mb-4">
+					<div class="card border-secondary mb-4">
 						<div class="card-body">
 							<blockquote class="blockquote mb-0 text-left">
 								<div class="container">
