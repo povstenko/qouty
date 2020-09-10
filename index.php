@@ -92,7 +92,7 @@ $quotes = get_quotes_limit($sort_by, $order, $start, $quantity_per_page);
 												<svg class="bi" width="16" height="16" fill="currentColor">
 													<use xlink:href="vendor/bootstrap-icons.svg#heart" />
 												</svg>
-												15
+												<?= count_likes_by_quote_id($quote['id'])?>
 											</button>
 											<button type="button" class="btn btn-sm">
 												<svg class="bi" width="16" height="16" fill="currentColor">

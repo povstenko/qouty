@@ -71,6 +71,12 @@ function get_quotes_limit($sort_by, $sort_asc, $start, $qty)
 // COUNT
 //------------------------------------------
 
+// COUNT likes
+function count_likes_by_quote_id($id)
+{
+    return R::count('likes', 'quote_id = ?', array($id));
+}
+
 function count_quotes()
 {
     return R::count('quotes');
