@@ -60,10 +60,23 @@ function get_all_quotes()
     return R::getAll("SELECT * FROM quotes");
 }
 
-function get_quotes_limit($start, $qty)
+function get_quotes_limit($sort_by, $sort_asc, $start, $qty)
 {
-    return R::getAll("SELECT * FROM announcements LIMIT " . $start . ", " . $qty);
+    return R::getAll("SELECT * FROM quotes ORDER BY " . $sort_by . " " . $sort_asc . " LIMIT " . $start . ", " . $qty);
 }
+
+
+
+//------------------------------------------
+// COUNT
+//------------------------------------------
+
+function count_quotes()
+{
+    return R::count('quotes');
+}
+
+
 
 // ==============================================================
 //
