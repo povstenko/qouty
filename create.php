@@ -3,10 +3,31 @@ require "php/db.php";
 include_once 'php/functions.php';
 
 if (array_key_exists('logged_user', $_SESSION)) {
+    $data = $_POST;
+    $errors = array();
+
+    if (isset($data['do_create'])) {
+        if (trim($data['text']) == '') {
+            $errors[] = 'Quote is empthy';
+        }
+        if (trim($data['author'] == '')) {
+            $errors[] = 'Author is empthy';
+        }
+
+        if (empty($errors)) {
+            $quote = R::dispense('quotes');
+            $quote->text = $data['text'];
+            $quote->author = $data['author'];
+            $quote->user_id = $_SESSION['logged_user']['id'];
+            $quote->creation_date = time();
+            R::store($quote);
+
+            header("location: index.php");
+        }
+    }
 } else {
     header("location: signin.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +88,7 @@ if (array_key_exists('logged_user', $_SESSION)) {
                 <div class="col">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form enctype="multipart/form-data" class="form-group mb-0" action="create-announcement.php" method="POST">
+                            <form enctype="multipart/form-data" class="form-group mb-0" action="create.php" method="POST">
                                 <div class="row">
                                     <div class="col-1 p-0">
                                         <img src="img/quote_left.png" class="float-right" alt="quote">
