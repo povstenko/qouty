@@ -65,6 +65,10 @@ function get_quotes_limit($sort_by, $sort_asc, $start, $qty)
     return R::getAll("SELECT * FROM quotes ORDER BY " . $sort_by . " " . $sort_asc . " LIMIT " . $start . ", " . $qty);
 }
 
+function get_likes_by_quote($quote_id)
+{
+    return R::getAll("SELECT likes FROM quotes WHERE id = " . $quote_id);
+}
 
 
 //------------------------------------------
@@ -77,9 +81,33 @@ function count_likes_by_quote_id($id)
     return R::count('likes', 'quote_id = ?', array($id));
 }
 
+function count_likes_by_user_and_quote($user_id, $quote_id)
+{
+    return R::count('likes', "user_id = :user AND quote_id = :quote", [":user" => $user_id, ":quote" => $quote_id]);
+}
+
 function count_quotes()
 {
     return R::count('quotes');
+}
+
+//------------------------------------------
+// INSERT
+//------------------------------------------
+function insert_likes($user_id, $quote_id)
+{
+    R::exec("INSERT INTO likes (userid, postid) VALUES ($user_id, $quote_id)");
+}
+
+
+//------------------------------------------
+// UPDATE
+//------------------------------------------
+function update_quote_likes($likes_num, $quote_id)
+{
+    R::exec("UPDATE quotes
+            SET likes = $likes_num
+            WHERE id = $quote_id");
 }
 
 

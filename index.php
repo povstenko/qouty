@@ -3,6 +3,7 @@ require "php/db.php";
 include_once 'php/functions.php';
 
 $data = $_GET;
+$user = $_SESSION['logged_user'];
 $sort_by = 'creation_date';
 $order = 'desc';
 $quantity_per_page = 10;
@@ -23,6 +24,32 @@ if (isset($data['page']) and $data['page'] > 0) {
 $start = ($page - 1) * $quantity_per_page;
 
 $quotes = get_quotes_limit($sort_by, $order, $start, $quantity_per_page);
+
+if (isset($_POST['liked'])) {
+	$postid = $_POST['postid'];
+	$n = get_likes_by_quote($postid)[0]['likes'];
+
+	$like = R::dispense('likes');
+	$like->user_id = $user['id'];
+	$like->quote_id = $postid;
+	R::store($like);
+
+	update_quote_likes($n + 1, $postid);
+	echo $n + 1;
+	exit();
+}
+if (isset($_POST['unliked'])) {
+	$postid = $_POST['postid'];
+	$n = get_likes_by_quote($postid)[0]['likes'];
+
+	$deleterow = R::exec('DELETE FROM likes WHERE quote_id = ? AND user_id = ?', [$postid, $user['id']]);
+
+	update_quote_likes($n - 1, $postid);
+
+	echo $n - 1;
+	exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -88,12 +115,41 @@ $quotes = get_quotes_limit($sort_by, $order, $start, $quantity_per_page);
 											<footer class="blockquote-footer"><?= $quote['author'] ?></footer>
 										</div>
 										<div class="col-2 text-right">
-											<button type="button" class="btn btn-sm">
-												<svg class="bi" width="16" height="16" fill="currentColor">
-													<use xlink:href="vendor/bootstrap-icons.svg#heart" />
-												</svg>
-												<?= count_likes_by_quote_id($quote['id'])?>
-											</button>
+											<?php if (count_likes_by_user_and_quote($user['id'], $quote['id']) == 1) : ?>
+												<button type="button" class="btn btn-sm unlike heart-1" data-id="<?= $quote['id']; ?>" style="display: inline;">
+													<svg class="bi" width="16" height="16" fill="currentColor">
+														<use xlink:href="vendor/bootstrap-icons.svg#heart-fill" />
+													</svg>
+													<span class="likes_count">
+														<?= count_likes_by_quote_id($quote['id']) ?>
+													</span>
+												</button>
+												<button type="button" class="btn btn-sm like heart-0" data-id="<?= $quote['id']; ?>" style="display: none;">
+													<svg class="bi" width="16" height="16" fill="currentColor">
+														<use xlink:href="vendor/bootstrap-icons.svg#heart" />
+													</svg>
+													<span class="likes_count">
+														<?= count_likes_by_quote_id($quote['id']) ?>
+													</span>
+												</button>
+											<?php else : ?>
+												<button type="button" class="btn btn-sm like heart-0" data-id="<?= $quote['id']; ?>" style="display: inline;">
+													<svg class="bi" width="16" height="16" fill="currentColor">
+														<use xlink:href="vendor/bootstrap-icons.svg#heart" />
+													</svg>
+													<span class="likes_count">
+														<?= count_likes_by_quote_id($quote['id']) ?>
+													</span>
+												</button>
+												<button type="button" class="btn btn-sm unlike heart-1" data-id="<?= $quote['id']; ?>" style="display: none;">
+													<svg class="bi" width="16" height="16" fill="currentColor">
+														<use xlink:href="vendor/bootstrap-icons.svg#heart-fill" />
+													</svg>
+													<span class="likes_count">
+														<?= count_likes_by_quote_id($quote['id']) ?>
+													</span>
+												</button>
+											<?php endif; ?>
 											<button type="button" class="btn btn-sm">
 												<svg class="bi" width="16" height="16" fill="currentColor">
 													<use xlink:href="vendor/bootstrap-icons.svg#bookmark" />
@@ -214,6 +270,8 @@ $quotes = get_quotes_limit($sort_by, $order, $start, $quantity_per_page);
 	<script src="js/script.js"></script>
 	<!-- Back to top button -->
 	<script src="js/top.js"></script>
+	<!-- Likes -->
+	<script src="js/like.js"></script>
 
 </body>
 
