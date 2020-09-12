@@ -86,6 +86,11 @@ function count_likes_by_user_and_quote($user_id, $quote_id)
     return R::count('likes', "user_id = :user AND quote_id = :quote", [":user" => $user_id, ":quote" => $quote_id]);
 }
 
+function count_saves_by_user_and_quote($user_id, $quote_id)
+{
+    return R::count('saves', "user_id = :user AND quote_id = :quote", [":user" => $user_id, ":quote" => $quote_id]);
+}
+
 function count_quotes()
 {
     return R::count('quotes');

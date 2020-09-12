@@ -45,11 +45,27 @@ if (isset($_POST['unliked'])) {
 	$deleterow = R::exec('DELETE FROM likes WHERE quote_id = ? AND user_id = ?', [$postid, $user['id']]);
 
 	update_quote_likes($n - 1, $postid);
-
 	echo $n - 1;
 	exit();
 }
 
+if (isset($_POST['saved'])) {
+	$postid = $_POST['postid'];
+
+	$save = R::dispense('saves');
+	$save->user_id = $user['id'];
+	$save->quote_id = $postid;
+	R::store($save);
+
+	exit();
+}
+if (isset($_POST['unsaved'])) {
+	$postid = $_POST['postid'];
+
+	$deleterow = R::exec('DELETE FROM saves WHERE quote_id = ? AND user_id = ?', [$postid, $user['id']]);
+
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -115,46 +131,68 @@ if (isset($_POST['unliked'])) {
 											<footer class="blockquote-footer"><?= $quote['author'] ?></footer>
 										</div>
 										<div class="col-2 text-right">
-											<?php if (count_likes_by_user_and_quote($user['id'], $quote['id']) == 1) : ?>
-												<button type="button" class="btn btn-sm unlike heart-1" data-id="<?= $quote['id']; ?>" style="display: inline;">
-													<svg class="bi" width="16" height="16" fill="currentColor">
-														<use xlink:href="vendor/bootstrap-icons.svg#heart-fill" />
-													</svg>
-													<span class="likes_count">
-														<?= count_likes_by_quote_id($quote['id']) ?>
-													</span>
-												</button>
-												<button type="button" class="btn btn-sm like heart-0" data-id="<?= $quote['id']; ?>" style="display: none;">
-													<svg class="bi" width="16" height="16" fill="currentColor">
-														<use xlink:href="vendor/bootstrap-icons.svg#heart" />
-													</svg>
-													<span class="likes_count">
-														<?= count_likes_by_quote_id($quote['id']) ?>
-													</span>
-												</button>
-											<?php else : ?>
-												<button type="button" class="btn btn-sm like heart-0" data-id="<?= $quote['id']; ?>" style="display: inline;">
-													<svg class="bi" width="16" height="16" fill="currentColor">
-														<use xlink:href="vendor/bootstrap-icons.svg#heart" />
-													</svg>
-													<span class="likes_count">
-														<?= count_likes_by_quote_id($quote['id']) ?>
-													</span>
-												</button>
-												<button type="button" class="btn btn-sm unlike heart-1" data-id="<?= $quote['id']; ?>" style="display: none;">
-													<svg class="bi" width="16" height="16" fill="currentColor">
-														<use xlink:href="vendor/bootstrap-icons.svg#heart-fill" />
-													</svg>
-													<span class="likes_count">
-														<?= count_likes_by_quote_id($quote['id']) ?>
-													</span>
-												</button>
-											<?php endif; ?>
-											<button type="button" class="btn btn-sm">
-												<svg class="bi" width="16" height="16" fill="currentColor">
-													<use xlink:href="vendor/bootstrap-icons.svg#bookmark" />
-												</svg>
-											</button>
+											<span>
+												<?php if (count_likes_by_user_and_quote($user['id'], $quote['id']) == 1) : ?>
+													<button type="button" class="btn btn-sm unlike" data-id="<?= $quote['id']; ?>" style="display: inline;">
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#heart-fill" />
+														</svg>
+														<span class="likes_count">
+															<?= count_likes_by_quote_id($quote['id']) ?>
+														</span>
+													</button>
+													<button type="button" class="btn btn-sm like" data-id="<?= $quote['id']; ?>" style="display: none;">
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#heart" />
+														</svg>
+														<span class="likes_count">
+															<?= count_likes_by_quote_id($quote['id']) ?>
+														</span>
+													</button>
+												<?php else : ?>
+													<button type="button" class="btn btn-sm like" data-id="<?= $quote['id']; ?>" style="display: inline;">
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#heart" />
+														</svg>
+														<span class="likes_count">
+															<?= count_likes_by_quote_id($quote['id']) ?>
+														</span>
+													</button>
+													<button type="button" class="btn btn-sm unlike" data-id="<?= $quote['id']; ?>" style="display: none;">
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#heart-fill" />
+														</svg>
+														<span class="likes_count">
+															<?= count_likes_by_quote_id($quote['id']) ?>
+														</span>
+													</button>
+												<?php endif; ?>
+											</span>
+											<span>
+												<?php if (count_saves_by_user_and_quote($user['id'], $quote['id']) == 1) : ?>
+													<button type="button" class="btn btn-sm unsave" data-id="<?= $quote['id']; ?>" style="display: inline;">
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#bookmark-fill" />
+														</svg>
+													</button>
+													<button type="button" class="btn btn-sm save" data-id="<?= $quote['id']; ?>" style="display: none;">
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#bookmark" />
+														</svg>
+													</button>
+												<?php else : ?>
+													<button type="button" class="btn btn-sm save" data-id="<?= $quote['id']; ?>" style="display: inline;">
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#bookmark" />
+														</svg>
+													</button>
+													<button type="button" class="btn btn-sm unsave" data-id="<?= $quote['id']; ?>" style="display: none;">
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#bookmark-fill" />
+														</svg>
+													</button>
+												<?php endif; ?>
+											</span>
 										</div>
 									</div>
 								</div>
@@ -272,6 +310,8 @@ if (isset($_POST['unliked'])) {
 	<script src="js/top.js"></script>
 	<!-- Likes -->
 	<script src="js/like.js"></script>
+	<!-- Saves -->
+	<script src="js/save.js"></script>
 
 </body>
 
