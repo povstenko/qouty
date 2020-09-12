@@ -1,3 +1,6 @@
+<?php
+
+?>
 <div class="jumbotron jumbotron-fluid my-bg-black mt-3">
 	<div class="container w-50">
 		<blockquote class="blockquote mb-0 text-left">
