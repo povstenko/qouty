@@ -3,11 +3,15 @@ require "php/db.php";
 include_once 'php/functions.php';
 
 $data = $_GET;
-$user = $_SESSION['logged_user'];
+$user = null;
 $sort_by = 'creation_date';
 $order = 'desc';
 $quantity_per_page = 10;
 
+if(isset($_SESSION['logged_user']))
+{
+	$user = $_SESSION['logged_user'];
+}
 
 $total = intval((count_quotes() - 1) / $quantity_per_page) + 1;
 
@@ -85,6 +89,8 @@ if (isset($_POST['unsaved'])) {
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Google Material Design Icons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Habibi -->
+	<link href="https://fonts.googleapis.com/css2?family=Habibi&display=swap" rel="stylesheet">
 	<!-- Font Awesome Icons -->
 	<link href="vendor/fontawesome-free-5.9.0-web/css/all.css" rel="stylesheet">
 
@@ -119,7 +125,7 @@ if (isset($_POST['unsaved'])) {
 											<img src="img/quote_left.png" class="float-right" alt="quote">
 										</div>
 										<div class="col pt-2">
-											<p><?= $quote['text'] ?></p>
+											<p class="text-habibi"><?= $quote['text'] ?></p>
 										</div>
 										<div class="col-1 align-self-end p-0">
 											<img src="img/quote_right.png" class="float-left mb-3" alt="quote">
@@ -128,7 +134,7 @@ if (isset($_POST['unsaved'])) {
 									<div class="row">
 										<div class="col-1"></div>
 										<div class="col">
-											<footer class="blockquote-footer"><?= $quote['author'] ?></footer>
+											<footer class="blockquote-footer text-habibi"><?= $quote['author'] ?></footer>
 										</div>
 										<div class="col-2 text-right">
 											<span>

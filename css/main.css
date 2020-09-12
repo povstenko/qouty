@@ -6,6 +6,10 @@ body {
   cursor: pointer;
 }
 
+.text-habibi {
+  font-family: 'Habibi', serif;
+}
+
 /* navbar */
 
 .navbar {

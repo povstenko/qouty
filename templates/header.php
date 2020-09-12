@@ -2,12 +2,12 @@
 	<div class="container w-50">
 		<blockquote class="blockquote mb-0 text-left">
 			<h1 class="display-3 my-0">“</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+			<p class="text-habibi">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 			<h1>━</h1>
 
 			<div class="row">
 				<div class="col">
-					<p class="small text-muted">Someone famous</p>
+					<p class="small text-muted text-habibi">Someone famous</p>
 				</div>
 				<div class="col-3 text-right">
 					<button type="button" class="btn btn-sm text-muted">

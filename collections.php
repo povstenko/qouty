@@ -49,7 +49,7 @@ if (array_key_exists('logged_user', $_SESSION)) {
         <div class="container text-left">
             <div class="row">
                 <div class="col">
-                    <h2 class="">
+                    <h2 class="text-habibi">
                         <svg class="bi" width="32" height="32" fill="currentColor">
                             <use xlink:href="vendor/bootstrap-icons.svg#collection" />
                         </svg>

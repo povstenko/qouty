@@ -53,21 +53,20 @@ if (!array_key_exists('logged_user', $_SESSION)) {
     <!-- Page Content -->
     <form class="form form-signin" action="signup.php" method="POST">
         <a href="index.php" class="my-link-no-style">
-            <h1 class="header-3 mb-5" href="index.php">Quotty</h1>
+            <h1 class="header-3 mb-5 text-habibi" href="index.php">“Quotty”</h1>
         </a>
-        <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+        <h1 class="h3 mb-3 font-weight-normal text-habibi">Sign Up</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" name="email" id="inputEmail" class="form-control border-secondary" placeholder="Email address" required>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox text-left my-2">
+        <input type="password" name="password" id="inputPassword" class="form-control border-secondary" placeholder="Password" required>
+        <div class="checkbox text-left text-muted my-2">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
         <button class="btn btn-lg my-btn-outline-yellow btn-block mb-3" type="submit" name="do_signup">Sign Up</button>
-        <p>Create new account for free? <a href="signin.php" class="my-link">Sign In</a></p>
-
+        <p class="text-habibi">Create new account for free? <a href="signin.php" class="my-link">Sign In</a></p>
 
         <!-- Footer -->
         <?php include_once 'templates/footer.php'; ?>
