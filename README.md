@@ -1,2 +1,2 @@
-# PHP Project Folder
-Empty PHP web project folder template
+# Quotty
+Website for sharing favorite quotes of famous people
