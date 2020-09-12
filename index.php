@@ -8,8 +8,7 @@ $sort_by = 'creation_date';
 $order = 'desc';
 $quantity_per_page = 10;
 
-if(isset($_SESSION['logged_user']))
-{
+if (isset($_SESSION['logged_user'])) {
 	$user = $_SESSION['logged_user'];
 }
 
@@ -83,14 +82,16 @@ if (isset($_POST['unsaved'])) {
 
 	<title>Quotty</title>
 
-	<link rel="shortcut icon" href="favicon.ico">
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="site.webmanifest">
 
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Google Material Design Icons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Habibi -->
-	<link href="https://fonts.googleapis.com/css2?family=Habibi&display=swap" rel="stylesheet">
 	<!-- Font Awesome Icons -->
 	<link href="vendor/fontawesome-free-5.9.0-web/css/all.css" rel="stylesheet">
 
