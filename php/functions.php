@@ -65,9 +65,28 @@ function get_quotes_limit($sort_by, $sort_asc, $start, $qty)
     return R::getAll("SELECT * FROM quotes ORDER BY " . $sort_by . " " . $sort_asc . " LIMIT " . $start . ", " . $qty);
 }
 
+function get_quotes_limit_from_collection($collection_id, $sort_by, $sort_asc, $start, $qty)
+{
+    return R::getAll("SELECT * FROM `quote_collections` INNER JOIN quotes ON quote_collections.quote_id = quotes.id WHERE collection_id = " . $collection_id . " ORDER BY " . $sort_by . " " . $sort_asc . " LIMIT " . $start . ", " . $qty);
+}
 function get_likes_by_quote($quote_id)
 {
     return R::getAll("SELECT likes FROM quotes WHERE id = " . $quote_id);
+}
+
+function get_quote_collections()
+{
+    return R::getAll("SELECT * FROM quote_collections");
+}
+
+function get_collections()
+{
+    return R::getAll("SELECT * FROM collections");
+}
+
+function get_collection_by_id($collection_id)
+{
+    return R::getAll("SELECT * FROM collections WHERE id = " . $collection_id);
 }
 
 
@@ -95,6 +114,12 @@ function count_quotes()
 {
     return R::count('quotes');
 }
+
+function count_quote_collection_by_collection_id($collection_id)
+{
+    return R::count('quote_collection', "collection_id = ?", array($collection_id));
+}
+
 
 //------------------------------------------
 // INSERT

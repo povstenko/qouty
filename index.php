@@ -213,10 +213,10 @@ if (isset($_POST['unsaved'])) {
 													<?php endif; ?>
 												<?php else : ?>
 													<a type="button" class="btn btn-sm" style="display: inline;" href="signin.php">
-															<svg class="bi" width="16" height="16" fill="currentColor">
-																<use xlink:href="vendor/bootstrap-icons.svg#bookmark" />
-															</svg>
-												</a>
+														<svg class="bi" width="16" height="16" fill="currentColor">
+															<use xlink:href="vendor/bootstrap-icons.svg#bookmark" />
+														</svg>
+													</a>
 												<?php endif; ?>
 											</span>
 										</div>
