@@ -6,15 +6,12 @@ if (array_key_exists('logged_user', $_SESSION)) {
 
     $data = $_GET;
     $user = null;
-    $sort_by = 'creation_date';
-    $order = 'desc';
-    $quantity_per_page = 10;
-    $collection_id = $_GET['id'];
-    $collection = get_collection_by_id($collection_id)[0];
-
     if (isset($_SESSION['logged_user'])) {
         $user = $_SESSION['logged_user'];
     }
+    $sort_by = 'creation_date';
+    $order = 'desc';
+    $quantity_per_page = 10;
 
     $request = '';
     foreach (array_keys($data) as $key) {
@@ -25,7 +22,15 @@ if (array_key_exists('logged_user', $_SESSION)) {
         }
     }
 
-    $total = intval((count_quote_collection_by_collection_id($collection_id) - 1) / $quantity_per_page) + 1;
+    $total = null;
+    if (isset($data['id'])) {
+        $collection_id = $data['id'];
+        $collection = get_collection_by_id($collection_id)[0];
+        $total = intval((count_quote_collection_by_collection_id($collection_id) - 1) / $quantity_per_page) + 1;
+    } elseif (isset($data['saved'])) {
+        $collection['name'] = 'Saved by ' . $user['email'];
+        $total = intval((count_saves_by_user_id($user['id']) - 1) / $quantity_per_page) + 1;
+    }
 
     if (isset($data['page']) and $data['page'] > 0) {
         if ($data['page'] > $total) {
@@ -38,8 +43,13 @@ if (array_key_exists('logged_user', $_SESSION)) {
     }
 
     $start = ($page - 1) * $quantity_per_page;
+    $quotes = null;
+    if (isset($data['id'])) {
+        $quotes = get_quotes_limit_from_collection($collection_id, $sort_by, $order, $start, $quantity_per_page);
+    } elseif (isset($data['saved'])) {
+        $quotes = get_quotes_limit_from_saves($user['id'], $sort_by, $order, $start, $quantity_per_page);
+    }
 
-    $quotes = get_quotes_limit_from_collection($collection_id, $sort_by, $order, $start, $quantity_per_page);
 
     if (isset($_POST['liked'])) {
         $postid = $_POST['postid'];
@@ -64,7 +74,6 @@ if (array_key_exists('logged_user', $_SESSION)) {
         echo $n - 1;
         exit();
     }
-
     if (isset($_POST['saved'])) {
         $postid = $_POST['postid'];
 
@@ -134,7 +143,7 @@ if (array_key_exists('logged_user', $_SESSION)) {
                         <svg class="bi" width="32" height="32" fill="currentColor">
                             <use xlink:href="vendor/bootstrap-icons.svg#bookmarks" />
                         </svg>
-                        <?= $collection['name']?>
+                        <?= $collection['name'] ?>
                     </h2>
                 </div>
             </div>
@@ -365,9 +374,9 @@ if (array_key_exists('logged_user', $_SESSION)) {
     <!-- Back to top button -->
     <script src="js/top.js"></script>
     <!-- Likes -->
-	<script src="js/like.js"></script>
-	<!-- Saves -->
-	<script src="js/save.js"></script>
+    <script src="js/like.js"></script>
+    <!-- Saves -->
+    <script src="js/save.js"></script>
 
 </body>
 

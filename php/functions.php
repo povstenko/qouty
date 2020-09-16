@@ -69,11 +69,18 @@ function get_quotes_limit_from_collection($collection_id, $sort_by, $sort_asc, $
 {
     return R::getAll("SELECT * FROM `quote_collections` INNER JOIN quotes ON quote_collections.quote_id = quotes.id WHERE collection_id = " . $collection_id . " ORDER BY " . $sort_by . " " . $sort_asc . " LIMIT " . $start . ", " . $qty);
 }
+function get_quotes_limit_from_saves($user_id, $sort_by, $sort_asc, $start, $qty)
+{
+    return R::getAll("SELECT * FROM `saves` INNER JOIN quotes ON saves.quote_id = quotes.id WHERE saves.user_id = " . $user_id . " ORDER BY " . $sort_by . " " . $sort_asc . " LIMIT " . $start . ", " . $qty);
+}
 function get_likes_by_quote($quote_id)
 {
     return R::getAll("SELECT likes FROM quotes WHERE id = " . $quote_id);
 }
-
+function get_saves_by_user_id($user_id)
+{
+    return R::getAll("SELECT * FROM saves WHERE 'user_id' = " . $user_id);
+}
 function get_quote_collections()
 {
     return R::getAll("SELECT * FROM quote_collections");
@@ -108,6 +115,11 @@ function count_likes_by_user_and_quote($user_id, $quote_id)
 function count_saves_by_user_and_quote($user_id, $quote_id)
 {
     return R::count('saves', "user_id = :user AND quote_id = :quote", [":user" => $user_id, ":quote" => $quote_id]);
+}
+
+function count_saves_by_user_id($user_id)
+{
+    return R::count('saves', "user_id = ?", array($user_id));
 }
 
 function count_quotes()

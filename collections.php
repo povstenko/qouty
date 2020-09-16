@@ -70,7 +70,7 @@ if (array_key_exists('logged_user', $_SESSION)) {
     <!-- Page Content -->
     <section class="my-bg-gray text-dark mb-5 py-5">
         <div class="container">
-            <a href="collection.php" class="collection-item">
+            <a href="collection.php?saved" class="collection-item">
                 <div class="card border-secondary mb-4">
                     <div class="card-body">
                         <div class="row">
