@@ -28,7 +28,7 @@ if (array_key_exists('logged_user', $_SESSION)) {
         $collection = get_collection_by_id($collection_id)[0];
         $total = intval((count_quote_collection_by_collection_id($collection_id) - 1) / $quantity_per_page) + 1;
     } elseif (isset($data['saved'])) {
-        $collection['name'] = 'Saved by ' . $user['email'];
+        $collection['name'] = 'Saved';
         $total = intval((count_saves_by_user_id($user['id']) - 1) / $quantity_per_page) + 1;
     }
 
@@ -140,9 +140,15 @@ if (array_key_exists('logged_user', $_SESSION)) {
             <div class="row">
                 <div class="col">
                     <h2 class="text-habibi">
-                        <svg class="bi" width="32" height="32" fill="currentColor">
-                            <use xlink:href="vendor/bootstrap-icons.svg#bookmarks" />
-                        </svg>
+                        <?php if (isset($data['id'])) : ?>
+                            <svg class="bi" width="32" height="32" fill="currentColor">
+                                <use xlink:href="vendor/bootstrap-icons.svg#collection" />
+                            </svg>
+                        <?php elseif (isset($data['saved'])) : ?>
+                            <svg class="bi" width="32" height="32" fill="currentColor">
+                                <use xlink:href="vendor/bootstrap-icons.svg#bookmarks" />
+                            </svg>
+                        <?php endif; ?>
                         <?= $collection['name'] ?>
                     </h2>
                 </div>

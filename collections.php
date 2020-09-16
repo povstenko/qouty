@@ -112,7 +112,7 @@ if (array_key_exists('logged_user', $_SESSION)) {
                 <?php endforeach; ?>
             <?php else : ?>
             <?php endif; ?>
-            <a href="collection.php" class="collection-item">
+            <a href="index.php" class="collection-item">
                 <div class="card border-secondary mb-4">
                     <div class="card-body">
                         <div class="row">
