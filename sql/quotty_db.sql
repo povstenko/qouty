@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Сен 12 2020 г., 10:35
+-- Время создания: Сен 18 2020 г., 12:58
 -- Версия сервера: 10.4.14-MariaDB
 -- Версия PHP: 7.4.9
 
@@ -20,13 +20,35 @@ SET time_zone = "+00:00";
 --
 -- База данных: `quotty_db`
 --
+CREATE DATABASE IF NOT EXISTS `quotty_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `quotty_db`;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `collections`
+--
+
+CREATE TABLE `collections` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `creation_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `collections`
+--
+
+INSERT INTO `collections` (`id`, `name`, `description`, `icon`, `user_id`, `creation_date`) VALUES
+(1, 'animals', NULL, NULL, '4', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `likes`
---
--- Создание: Сен 10 2020 г., 21:05
 --
 
 CREATE TABLE `likes` (
@@ -41,14 +63,14 @@ CREATE TABLE `likes` (
 
 INSERT INTO `likes` (`id`, `quote_id`, `user_id`) VALUES
 (6, 9, 1),
-(7, 9, 2);
+(7, 9, 2),
+(76, 12, 4),
+(77, 11, 4);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `quotes`
---
--- Создание: Сен 11 2020 г., 07:54
 --
 
 CREATE TABLE `quotes` (
@@ -73,16 +95,34 @@ INSERT INTO `quotes` (`id`, `text`, `author`, `user_id`, `likes`, `creation_date
 (6, 'test', 'admin', 4, 0, 1599770407),
 (7, 'create', 'admin', 4, 0, 1599770416),
 (8, '2', 'tester', 4, 0, 1599770457),
-(9, '3', 'teser', 4, 2, 1599770467),
+(9, 'Its a top of the top', 'teser', 4, 2, 1599770467),
 (10, '4', 'tester', 4, 0, 1599770480),
-(11, '5', 'tester', 4, 0, 1599770517);
+(11, '5', 'tester', 4, 1, 1599770517),
+(12, 'dog is not cat', 'author', 4, 1, 1599902478);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `quote_collections`
+--
+
+CREATE TABLE `quote_collections` (
+  `id` int(11) NOT NULL,
+  `quote_id` int(11) NOT NULL,
+  `collection_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `quote_collections`
+--
+
+INSERT INTO `quote_collections` (`id`, `quote_id`, `collection_id`) VALUES
+(1, 12, 1);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `saves`
---
--- Создание: Сен 11 2020 г., 17:27
 --
 
 CREATE TABLE `saves` (
@@ -91,12 +131,18 @@ CREATE TABLE `saves` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `saves`
+--
+
+INSERT INTO `saves` (`id`, `quote_id`, `user_id`) VALUES
+(14, 12, 4),
+(15, 11, 4);
+
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `users`
---
--- Создание: Сен 08 2020 г., 18:52
 --
 
 CREATE TABLE `users` (
@@ -119,6 +165,12 @@ INSERT INTO `users` (`id`, `email`, `password`, `is_admin`, `token`) VALUES
 --
 
 --
+-- Индексы таблицы `collections`
+--
+ALTER TABLE `collections`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `likes`
 --
 ALTER TABLE `likes`
@@ -128,6 +180,12 @@ ALTER TABLE `likes`
 -- Индексы таблицы `quotes`
 --
 ALTER TABLE `quotes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `quote_collections`
+--
+ALTER TABLE `quote_collections`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -147,22 +205,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `collections`
+--
+ALTER TABLE `collections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT для таблицы `quotes`
 --
 ALTER TABLE `quotes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT для таблицы `quote_collections`
+--
+ALTER TABLE `quote_collections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `saves`
 --
 ALTER TABLE `saves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
