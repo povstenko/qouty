@@ -73,6 +73,10 @@ function get_quotes_limit_from_saves($user_id, $sort_by, $sort_asc, $start, $qty
 {
     return R::getAll("SELECT * FROM `saves` INNER JOIN quotes ON saves.quote_id = quotes.id WHERE saves.user_id = " . $user_id . " ORDER BY " . $sort_by . " " . $sort_asc . " LIMIT " . $start . ", " . $qty);
 }
+function get_top_quote()
+{
+    return R::getAll("SELECT * FROM quotes ORDER BY likes DESC LIMIT 1")[0];
+}
 function get_likes_by_quote($quote_id)
 {
     return R::getAll("SELECT likes FROM quotes WHERE id = " . $quote_id);
