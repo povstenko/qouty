@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Сен 18 2020 г., 12:58
+-- Время создания: Сен 19 2020 г., 17:11
 -- Версия сервера: 10.4.14-MariaDB
 -- Версия PHP: 7.4.9
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- База данных: `quotty_db`
 --
-CREATE DATABASE IF NOT EXISTS `quotty_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `quotty_db`;
 
 -- --------------------------------------------------------
 
@@ -43,7 +41,10 @@ CREATE TABLE `collections` (
 --
 
 INSERT INTO `collections` (`id`, `name`, `description`, `icon`, `user_id`, `creation_date`) VALUES
-(1, 'animals', NULL, NULL, '4', 1);
+(2, 'Books', 'Quotes about books and reading', NULL, '4', 1),
+(3, 'Success', '...', NULL, '4', 2),
+(4, 'Friendship', 'Quotes about friends', NULL, '4', 3),
+(5, 'Love', 'Quotes about relaionships', NULL, '4', 2);
 
 -- --------------------------------------------------------
 
@@ -62,10 +63,16 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`id`, `quote_id`, `user_id`) VALUES
-(6, 9, 1),
-(7, 9, 2),
-(76, 12, 4),
-(77, 11, 4);
+(79, 30, 4),
+(80, 32, 4),
+(81, 27, 4),
+(82, 23, 4),
+(83, 22, 4),
+(84, 19, 4),
+(85, 20, 4),
+(86, 17, 4),
+(87, 13, 4),
+(88, 35, 4);
 
 -- --------------------------------------------------------
 
@@ -87,18 +94,29 @@ CREATE TABLE `quotes` (
 --
 
 INSERT INTO `quotes` (`id`, `text`, `author`, `user_id`, `likes`, `creation_date`) VALUES
-(1, 'quote1', 'author', 4, 0, 1599753442),
-(2, 'quote2', 'me', 4, 0, 1599756021),
-(3, 'test', 'test', 4, 0, 1599770376),
-(4, '1', 'test', 4, 0, 1599770385),
-(5, 'quote', 'admin', 4, 0, 1599770397),
-(6, 'test', 'admin', 4, 0, 1599770407),
-(7, 'create', 'admin', 4, 0, 1599770416),
-(8, '2', 'tester', 4, 0, 1599770457),
-(9, 'Its a top of the top', 'teser', 4, 2, 1599770467),
-(10, '4', 'tester', 4, 0, 1599770480),
-(11, '5', 'tester', 4, 1, 1599770517),
-(12, 'dog is not cat', 'author', 4, 1, 1599902478);
+(13, 'So many books, so little time.', 'Frank Zappa', 4, 1, 1600524401),
+(14, 'A room without books is like a body without a soul.', ' Marcus Tullius Cicero', 4, 0, 1600524433),
+(15, 'You only live once, but if you do it right, once is enough.', 'Mae West', 4, 0, 1600524462),
+(16, 'Be the change that you wish to see in the world.', 'Mahatma Gandhi', 4, 0, 1600524497),
+(17, 'If you tell the truth, you don\'t have to remember anything.', 'Mark Twain', 4, 1, 1600524550),
+(18, 'Always forgive your enemies; nothing annoys them so much.', 'Oscar Wilde', 4, 0, 1600524586),
+(19, 'To live is the rarest thing in the world. Most people exist, that is all.', 'Oscar Wilde', 4, 1, 1600524602),
+(20, 'Get busy living or get busy dying.', 'Stephen King', 4, 1, 1600524745),
+(21, 'Those who dare to fail miserably can achieve greatly.', 'John F. Kennedy', 4, 0, 1600524774),
+(22, 'I’m a success today because I had a friend who believed in me and I didn’t have the heart to let him down.', 'Abraham Lincoln', 4, 1, 1600524842),
+(23, 'Love is a serious mental disease.', 'Plato', 4, 1, 1600524866),
+(24, 'If you want to live a happy life, tie it to a goal, not to people or things.', 'Albert Einstein', 4, 0, 1600524908),
+(25, 'Many of life’s failures are people who did not realize how close they were to success when they gave up.', 'Thomas A. Edison', 4, 0, 1600524925),
+(26, 'If you want to be happy, be.', 'Leo Tolstoy', 4, 0, 1600524943),
+(27, 'A friend is someone who gives you total freedom to be yourself.', 'Jim Morrison', 4, 1, 1600524971),
+(28, 'Your time is limited, so don’t waste it living someone else’s life. Don’t be trapped by dogma – which is living with the results of other people’s thinking.', 'Steve Jobs', 4, 0, 1600524997),
+(29, 'A man is a success if he gets up in the morning and gets to bed at night, and in between he does what he wants to do.', 'Bob Dylan', 4, 0, 1600525110),
+(30, 'The whole secret of a successful life is to find out what is one’s destiny to do, and then do it.', 'Henry Ford', 4, 1, 1600525131),
+(31, 'Success? I don’t know what that word means. I’m happy. But success, that goes back to what in somebody’s eyes success means. For me, success is inner peace. That’s a good day for me.', 'Denzel Washington', 4, 0, 1600525147),
+(32, 'In order to write about life first you must live it.', 'Ernest Hemingway', 4, 1, 1600525166),
+(33, 'We are what we repeatedly do; excellence, then, is not an act but a habit.', 'Aristotle', 4, 0, 1600525187),
+(34, 'The big lesson in life, baby, is never be scared of anyone or anything.', 'Frank Sinatra', 4, 0, 1600525207),
+(35, 'The person who reads too much and uses his brain too little will fall into lazy habits of thinking.', 'Albert Einstein', 4, 1, 1600525228);
 
 -- --------------------------------------------------------
 
@@ -117,7 +135,20 @@ CREATE TABLE `quote_collections` (
 --
 
 INSERT INTO `quote_collections` (`id`, `quote_id`, `collection_id`) VALUES
-(1, 12, 1);
+(2, 13, 2),
+(3, 14, 2),
+(4, 35, 2),
+(5, 15, 3),
+(6, 21, 3),
+(7, 22, 3),
+(8, 25, 3),
+(9, 28, 3),
+(10, 29, 3),
+(11, 30, 3),
+(12, 31, 3),
+(13, 18, 4),
+(14, 27, 4),
+(15, 23, 5);
 
 -- --------------------------------------------------------
 
@@ -136,8 +167,10 @@ CREATE TABLE `saves` (
 --
 
 INSERT INTO `saves` (`id`, `quote_id`, `user_id`) VALUES
-(14, 12, 4),
-(15, 11, 4);
+(18, 23, 4),
+(19, 19, 4),
+(20, 17, 4),
+(21, 35, 4);
 
 -- --------------------------------------------------------
 
@@ -208,31 +241,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT для таблицы `quotes`
 --
 ALTER TABLE `quotes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT для таблицы `quote_collections`
 --
 ALTER TABLE `quote_collections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `saves`
 --
 ALTER TABLE `saves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
