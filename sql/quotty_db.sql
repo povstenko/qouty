@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Сен 19 2020 г., 17:11
+-- Хост: 127.0.0.1
+-- Время создания: Сен 26 2020 г., 13:17
 -- Версия сервера: 10.4.14-MariaDB
--- Версия PHP: 7.4.9
+-- Версия PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -72,7 +72,14 @@ INSERT INTO `likes` (`id`, `quote_id`, `user_id`) VALUES
 (85, 20, 4),
 (86, 17, 4),
 (87, 13, 4),
-(88, 35, 4);
+(88, 35, 4),
+(89, 35, 5),
+(90, 29, 5),
+(91, 30, 5),
+(92, 33, 5),
+(93, 26, 5),
+(94, 28, 5),
+(95, 30, 6);
 
 -- --------------------------------------------------------
 
@@ -107,16 +114,16 @@ INSERT INTO `quotes` (`id`, `text`, `author`, `user_id`, `likes`, `creation_date
 (23, 'Love is a serious mental disease.', 'Plato', 4, 1, 1600524866),
 (24, 'If you want to live a happy life, tie it to a goal, not to people or things.', 'Albert Einstein', 4, 0, 1600524908),
 (25, 'Many of life’s failures are people who did not realize how close they were to success when they gave up.', 'Thomas A. Edison', 4, 0, 1600524925),
-(26, 'If you want to be happy, be.', 'Leo Tolstoy', 4, 0, 1600524943),
+(26, 'If you want to be happy, be.', 'Leo Tolstoy', 4, 1, 1600524943),
 (27, 'A friend is someone who gives you total freedom to be yourself.', 'Jim Morrison', 4, 1, 1600524971),
-(28, 'Your time is limited, so don’t waste it living someone else’s life. Don’t be trapped by dogma – which is living with the results of other people’s thinking.', 'Steve Jobs', 4, 0, 1600524997),
-(29, 'A man is a success if he gets up in the morning and gets to bed at night, and in between he does what he wants to do.', 'Bob Dylan', 4, 0, 1600525110),
-(30, 'The whole secret of a successful life is to find out what is one’s destiny to do, and then do it.', 'Henry Ford', 4, 1, 1600525131),
+(28, 'Your time is limited, so don’t waste it living someone else’s life. Don’t be trapped by dogma – which is living with the results of other people’s thinking.', 'Steve Jobs', 4, 1, 1600524997),
+(29, 'A man is a success if he gets up in the morning and gets to bed at night, and in between he does what he wants to do.', 'Bob Dylan', 4, 1, 1600525110),
+(30, 'The whole secret of a successful life is to find out what is one’s destiny to do, and then do it.', 'Henry Ford', 4, 3, 1600525131),
 (31, 'Success? I don’t know what that word means. I’m happy. But success, that goes back to what in somebody’s eyes success means. For me, success is inner peace. That’s a good day for me.', 'Denzel Washington', 4, 0, 1600525147),
 (32, 'In order to write about life first you must live it.', 'Ernest Hemingway', 4, 1, 1600525166),
-(33, 'We are what we repeatedly do; excellence, then, is not an act but a habit.', 'Aristotle', 4, 0, 1600525187),
+(33, 'We are what we repeatedly do; excellence, then, is not an act but a habit.', 'Aristotle', 4, 1, 1600525187),
 (34, 'The big lesson in life, baby, is never be scared of anyone or anything.', 'Frank Sinatra', 4, 0, 1600525207),
-(35, 'The person who reads too much and uses his brain too little will fall into lazy habits of thinking.', 'Albert Einstein', 4, 1, 1600525228);
+(35, 'The person who reads too much and uses his brain too little will fall into lazy habits of thinking.', 'Albert Einstein', 4, 2, 1600525228);
 
 -- --------------------------------------------------------
 
@@ -191,7 +198,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `is_admin`, `token`) VALUES
-(4, 'vitaly.povstenko@gmail.com', '123', NULL, 'E0NIkRiU0fenTCsF5wo37xq4miMURl00pE2pet1htbxh3kWkqx52q9U3kDa45GNfu7yCakBTKv4q2mXH');
+(4, 'vitaly.povstenko@gmail.com', '123', NULL, 'E0NIkRiU0fenTCsF5wo37xq4miMURl00pE2pet1htbxh3kWkqx52q9U3kDa45GNfu7yCakBTKv4q2mXH'),
+(5, 'test@gmail.com', '123', NULL, 'fY4OrWXTA0hkZCiTAv3e2Ab85ov9ZcU0LDevr9ghgRCv7wq47srvtvr54i3LFc0VLJbEJBVoW6A2umc8'),
+(6, 'test@test', '123', NULL, 'xqnBsi46ozKWX7T4zUVyjuKxfhwkF27pYq1kZTci9xWrQNsG6kmxXRpCsgFVBr85oqNqDmmprAfzZkM1');
 
 --
 -- Индексы сохранённых таблиц
@@ -247,7 +256,7 @@ ALTER TABLE `collections`
 -- AUTO_INCREMENT для таблицы `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT для таблицы `quotes`
@@ -271,7 +280,7 @@ ALTER TABLE `saves`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
