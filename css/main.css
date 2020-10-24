@@ -1,84 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Habibi&display=swap');
-
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Habibi&display=swap");
 body {
   background-color: black;
 }
-
-.clickable {
-  cursor: pointer;
-}
-
-.text-habibi {
-  font-family: 'Habibi', serif;
-}
-
-/* navbar */
-
-.navbar {
+body .navbar {
   transition: all 0.4s;
 }
-
-.navbar .nav-link {
+body .navbar .nav-link {
   color: #fff;
 }
-
-.navbar .nav-link:hover,
-.navbar .nav-link:focus {
+body .navbar .nav-link:hover {
   color: #fff;
   text-decoration: none;
 }
-
-.navbar .navbar-brand {
+body .navbar .navbar-brand {
   color: #fff;
 }
-
-/* Change navbar styling on scroll */
-.navbar.active {
+body .navbar .active {
+  /* Change navbar styling on scroll */
   background: #fff;
   box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
 }
-
-.navbar.active .nav-link {
+body .navbar .active .nav-link {
   color: #555;
 }
-
-.navbar.active .nav-link:hover,
-.navbar.active .nav-link:focus {
+body .navbar .active .nav-link:hover {
   color: #555;
   text-decoration: none;
 }
-
-.navbar.active .navbar-brand {
+body .navbar .active .navbar-brand {
   color: #555;
 }
-
-/* Change navbar styling on small viewports */
-@media (max-width: 991.98px) {
-  .navbar {
-    background: #fff;
-  }
-
-  .navbar .navbar-brand,
-  .navbar .nav-link {
-    color: #555;
-  }
-}
-
-/* preloader */
-
-.preloader {
+body .preloader {
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  /*background: #DDDCD6;*/
   z-index: 10000;
 }
-
-/* back to top button */
-
-#back-to-top-button {
+body #back-to-top-button {
   display: inline-block;
   background-color: black;
   width: 50px;
@@ -93,262 +54,146 @@ body {
   visibility: hidden;
   z-index: 1000;
 }
-
-#back-to-top-button::after {
+body #back-to-top-button::after {
   font-family: "Font Awesome 5 Free";
-  content: "\f106";
+  content: "";
   font-weight: 900;
   font-size: 2em;
   line-height: 50px;
   color: white;
 }
-
-#back-to-top-button:hover {
+body #back-to-top-button:hover {
   cursor: pointer;
   background-color: #f9c61c;
 }
-
-#back-to-top-button:active {
+body #back-to-top-button:active {
   background-color: #555;
 }
-
-#back-to-top-button.show {
+body #back-to-top-button .show {
   opacity: 1;
   visibility: visible;
 }
-
-/* pagination */
-
-.pagination>li>a {
-  background-color: white;
-  color: #1a5784;
-  border-color: #d4dadf;
-}
-
-.pagination>li>a:focus,
-.pagination>li>a:hover,
-.pagination>li>span:focus,
-.pagination>li>span:hover {
-  color: #1a5784;
-  background-color: #e8eaed;
-  border-color: #d4dadf;
-}
-
-.pagination>.disabled>a,
-.pagination>.disabled>span {
-  background-color: #dee2e6 !important;
-  border-color: #d4dadf !important;
-}
-
-.pagination>.active>span {
-  color: white;
-  background-color: #1a5784 !important;
-  border: solid 1px #1a5784 !important;
-}
-
-/* google material design icons */
-
-.material-icons {
-  vertical-align: middle;
-  line-height: 0 !important;
-  position: relative;
-  top: -3px;
-}
-
-/* Rules for sizing the icon. */
-
-.material-icons.md-18 {
-  font-size: 18px;
-}
-
-.material-icons.md-24 {
-  font-size: 24px;
-}
-
-.material-icons.md-36 {
-  font-size: 36px;
-}
-
-.material-icons.md-48 {
-  font-size: 48px;
-}
-
-/* Rules for using icons as black on a light background. */
-
-.material-icons.md-dark {
-  color: rgba(0, 0, 0, 0.54);
-}
-
-.material-icons.md-dark.md-inactive {
-  color: rgba(0, 0, 0, 0.26);
-}
-
-/* Rules for using icons as white on a dark background. */
-
-.material-icons.md-light {
-  color: rgba(255, 255, 255, 1);
-}
-
-.material-icons.md-light.md-inactive {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-/* pagination */
-
-.pagination > li > a {
+body .pagination li a {
   background-color: white;
   color: black;
   border-color: #d4dadf;
 }
-
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover {
+body .pagination li a:focus, body .pagination li a:hover {
   color: black;
   background-color: #e8eaed;
   border-color: #d4dadf;
 }
-
-.pagination > .disabled > a,
-.pagination > .disabled > span {
+body .pagination .disabled a, body .pagination .disabled span {
   background-color: #dee2e6 !important;
   border-color: #d4dadf !important;
 }
-
-.pagination > .active > span {
+body .pagination .active span {
   color: white;
   background-color: black !important;
   border: solid 1px black !important;
 }
-
-/* responsive */
-
-textarea,
-input.text,
-input[type="text"],
-input[type="button"],
-input[type="submit"],
-.input-checkbox {
-  -webkit-appearance: none;
-  border-radius: 0.25rem;
+body .material-icons {
+  /* google material design icons */
+  vertical-align: middle;
+  line-height: 0 !important;
+  position: relative;
+  top: -3px;
+  /* Rules for sizing the icon. */
 }
-
-@media (max-width: 768px) {
-  .border-sm-0 {
-    border: 0 !important;
-    border-radius: 0 !important;
-  }
+body .material-icons .md-18 {
+  font-size: 18px;
 }
-
-@media (max-width: 425px) {
-  .border-xs-0 {
-    border: 0 !important;
-    border-radius: 0 !important;
-  }
-  .btn-xs-block {
-    width: 100%;
-    display: block;
-  }
+body .material-icons .md-24 {
+  font-size: 24px;
 }
-
-.my-btn-white {
+body .material-icons .md-36 {
+  font-size: 36px;
+}
+body .material-icons .md-48 {
+  font-size: 48px;
+}
+body .material-icons .md-dark {
+  /* Rules for using icons as black on a light background. */
+  color: rgba(0, 0, 0, 0.54);
+}
+body .material-icons .md-dark .md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+body .material-icons .md-light {
+  /* Rules for using icons as white on a dark background. */
+  color: white;
+}
+body .material-icons .md-light .md-inactive {
+  color: rgba(255, 255, 255, 0.3);
+}
+body .btn .my-btn-white {
   background-color: white;
   color: black !important;
 }
-
-.my-btn-white:hover {
+body .btn .my-btn-white:hover {
   background-color: black;
   border-color: white;
   color: white !important;
 }
-
-.my-btn-outline-white {
+body .btn .my-btn-outline-white {
   border-color: white;
   color: white !important;
 }
-
-.my-btn-outline-white:hover {
+body .btn .my-btn-outline-white:hover {
   background-color: white;
   color: black !important;
 }
-
-.my-btn-outline-black {
+body .btn .my-btn-outline-black {
   border-color: black;
   color: black !important;
 }
-
-.my-btn-outline-black:hover {
+body .btn .my-btn-outline-black:hover {
   background-color: black;
   color: white !important;
 }
-
-.my-btn-outline-yellow {
+body .btn .my-btn-outline-yellow {
   border-color: #f9c61c;
   color: #f9c61c !important;
 }
-
-.my-btn-outline-yellow:hover {
+body .btn .my-btn-outline-yellow:hover {
   background-color: #f9c61c;
   color: black !important;
 }
-
-.my-bg-black {
+body .btn .my-bg-black {
   background-color: black;
 }
-
-.my-bg-gray {
+body .btn .my-bg-gray {
   background-color: #e9ecef;
 }
-
-.my-text-yellow {
+body .btn .my-text-yellow {
   color: #f9c61c;
 }
-
-.my-link {
-	color: #f9c61c;
+body .my-link {
+  color: #f9c61c;
 }
-.my-link:hover {
-	color: #f9c61c;
+body .my-link:hover, body .my-link:active, body .my-link:visited {
+  color: #f9c61c;
 }
-.my-link:active {
-	color: #f9c61c;
+body .my-link-no-style {
+  color: white;
+  text-decoration: none;
 }
-.my-link:visited {
-	color: #f9c61c;
+body .my-link-no-style:hover, body .my-link-no-style:active, body .my-link-no-style:visited {
+  color: white;
+  text-decoration: none;
 }
-
-.my-link-no-style {
-	color: white;
-	text-decoration: none;
+body .collection-item {
+  color: black;
+  text-decoration: none;
 }
-.my-link-no-style:hover {
-	color: white;
-	text-decoration: none;
-}
-.my-link-no-style:active {
-	color: white;
-	text-decoration: none;
-}
-.my-link-no-style:visited {
-	color: white;
-	text-decoration: none;
-}
-
-.collection-item {
-	color: black;
-	text-decoration: none;
-}
-.collection-item:hover {
+body .collection-item:hover, body .collection-item:active, body .collection-item:visited {
   background-color: #eee;
-	color: black;
-	text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
-.collection-item:active {
-	color: black;
-	text-decoration: none;
+body .clickable {
+  cursor: pointer;
 }
-.collection-item:visited {
- 	color: black;
-	text-decoration: none;
+body .text-habibi {
+  font-family: "Habibi", serif;
 }

@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Habibi&display=swap');
+$white: white;
+$light: #e8eaed;
+$light-border: #d4dadf;
+$black: black;
+$yellow: #f9c61c;
+
+
+body {
+  background-color: $black;
+
+  .navbar {
+    transition: all 0.4s;
+
+    .nav-link {
+      color: #fff;
+
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    .navbar-brand {
+      color: #fff;
+    }
+    .active {
+      /* Change navbar styling on scroll */
+      background: #fff;
+      box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+
+      .nav-link {
+        color: #555;
+
+        &:hover {
+          color: #555;
+          text-decoration: none;
+        }
+      }
+      .navbar-brand {
+        color: #555;
+      }
+    }
+  }
+
+  .preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+  }
+
+  #back-to-top-button {
+    display: inline-block;
+    background-color: $black;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+
+    &::after {
+      font-family: "Font Awesome 5 Free";
+      content: "\f106";
+      font-weight: 900;
+      font-size: 2em;
+      line-height: 50px;
+      color: $white;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $yellow;
+    }
+    &:active {
+      background-color: #555;
+    }
+    .show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .pagination {
+    li {
+      a {
+        background-color: $white;
+        color: $black;
+        border-color: #d4dadf;
+        &:focus, &:hover {
+          color: $black;
+          background-color: #e8eaed;
+          border-color: #d4dadf;
+        }
+      }
+    }
+    .disabled {
+      a, span {
+        background-color: #dee2e6 !important;
+        border-color: #d4dadf !important;
+      }
+    }
+    .active {
+      span {
+        color: $white;
+        background-color: $black !important;
+        border: solid 1px $black !important;
+      }
+    }
+  }
+
+  .material-icons {
+    /* google material design icons */
+    vertical-align: middle;
+    line-height: 0 !important;
+    position: relative;
+    top: -3px;
+
+    /* Rules for sizing the icon. */
+    .md-18 {
+      font-size: 18px;
+    }
+    .md-24 {
+      font-size: 24px;
+    }
+    .md-36 {
+      font-size: 36px;
+    }
+    .md-48 {
+      font-size: 48px;
+    }
+
+    .md-dark {
+      /* Rules for using icons as black on a light background. */
+      color: rgba(0, 0, 0, 0.54);
+
+      .md-inactive {
+        color: rgba(0, 0, 0, 0.26);
+      }
+    }
+
+    .md-light {
+      /* Rules for using icons as white on a dark background. */
+      color: rgba(255, 255, 255, 1);
+
+      .md-inactive {
+        color: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+
+  .btn{
+    .my-btn-white {
+      background-color: $white;
+      color: $black !important;
+      &:hover {
+        background-color: $black;
+        border-color: $white;
+        color: $white !important;
+      }
+    }
+
+    .my-btn-outline-white {
+      border-color: $white;
+      color: $white !important;
+      &:hover {
+        background-color: $white;
+        color: $black !important;
+      }
+    }
+
+    .my-btn-outline-black {
+      border-color: $black;
+      color: $black !important;
+      &:hover {
+        background-color: $black;
+        color: $white !important;
+      }
+    }
+
+    .my-btn-outline-yellow {
+      border-color: $yellow;
+      color: $yellow !important;
+      &:hover {
+        background-color: $yellow;
+        color: $black !important;
+      }
+    }
+
+    .my-bg-black {
+      background-color: $black;
+    }
+
+    .my-bg-gray {
+      background-color: #e9ecef;
+    }
+
+    .my-text-yellow {
+      color: $yellow;
+    }
+  }
+
+  .my-link {
+    color: $yellow;
+    &:hover, &:active, &:visited {
+      color: $yellow;
+    }
+  }
+
+  .my-link-no-style {
+    color: $white;
+    text-decoration: none;
+    &:hover, &:active, &:visited {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  .collection-item {
+    color: $black;
+    text-decoration: none;
+    &:hover, &:active, &:visited {
+      background-color: #eee;
+      color: $black;
+      text-decoration: none;
+    }
+  }
+
+  .clickable {
+    cursor: pointer;
+  }
+  .text-habibi {
+    font-family: 'Habibi', serif;
+  }
+}
