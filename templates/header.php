@@ -3,7 +3,7 @@ $top = get_top_quote();
 console_log($top);
 ?>
 <div class="jumbotron jumbotron-fluid my-bg-black mt-3">
-	<div class="container w-50">
+	<div class="container w-md-50">
 		<blockquote class="blockquote mb-0 text-left">
 			<h1 class="display-3 my-0">“</h1>
 			<p class="text-habibi"><?= $top['text'] ?></p>

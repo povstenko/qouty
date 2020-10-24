@@ -114,7 +114,7 @@ if (isset($_POST['unsaved'])) {
 
 	<!-- Page Content -->
 	<section class="my-bg-gray text-dark">
-		<div class="container py-5 w-75">
+		<div class="container py-3 py-md-5 w-md-75">
 			<?php if ($quotes) :
 				foreach ($quotes as $quote) : ?>
 					<div class="card border-secondary mb-4">
@@ -229,7 +229,7 @@ if (isset($_POST['unsaved'])) {
 
 				<!-- Pagination-->
 				<nav aria-label="Page navigation">
-					<ul class="pagination justify-content-center mt-3 mt-md-0 mb-3">
+					<ul class="pagination justify-content-center mt-3 mt-md-0">
 						<?php if ($page == 1) : ?>
 							<li class="page-item disabled">
 								<span class="page-link">&laquo;</span>

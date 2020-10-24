@@ -16,7 +16,7 @@
 				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "create.php") ? "active" : "" ?>">
 					<a class="nav-link" href="<?= (isset($_SESSION['logged_user'])) ? "create.php" : "signin.php" ?>">Create</a>
 				</li>
-				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "saved.php") ? "active" : "" ?>">
+				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "collection.php?saved") ? "active" : "" ?>">
 					<a class="nav-link" href="<?= (isset($_SESSION['logged_user'])) ? "collection.php?saved" : "signin.php" ?>">Saved</a>
 				</li>
 				<li class="nav-item <?= (basename($_SERVER['PHP_SELF']) == "profile.php") ? "active" : "" ?>">
