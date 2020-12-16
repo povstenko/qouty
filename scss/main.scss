@@ -29,7 +29,7 @@ body {
       box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
 
       .nav-link {
-        color: #555;
+        color: #555 !important;
 
         &:hover {
           color: #555;
@@ -155,55 +155,14 @@ body {
     }
   }
 
-  .btn{
-    .my-btn-white {
-      background-color: $white;
-      color: $black !important;
-      &:hover {
-        background-color: $black;
-        border-color: $white;
-        color: $white !important;
-      }
-    }
-
-    .my-btn-outline-white {
-      border-color: $white;
-      color: $white !important;
-      &:hover {
-        background-color: $white;
-        color: $black !important;
-      }
-    }
-
-    .my-btn-outline-black {
-      border-color: $black;
-      color: $black !important;
-      &:hover {
-        background-color: $black;
-        color: $white !important;
-      }
-    }
-
-    .my-btn-outline-yellow {
-      border-color: $yellow;
-      color: $yellow !important;
-      &:hover {
-        background-color: $yellow;
-        color: $black !important;
-      }
-    }
-
-    .my-bg-black {
-      background-color: $black;
-    }
-
-    .my-bg-gray {
-      background-color: #e9ecef;
-    }
-
-    .my-text-yellow {
-      color: $yellow;
-    }
+  .my-bg-black {
+    background-color: $black;
+  }
+  .my-bg-gray {
+    background-color: #e9ecef;
+  }
+  .my-text-yellow {
+    color: $yellow;
   }
 
   .my-link {
@@ -239,3 +198,40 @@ body {
     font-family: 'Habibi', serif;
   }
 }
+
+.my-btn-white {
+    background-color: $white;
+    color: $black !important;
+    &:hover {
+      background-color: $black;
+      border-color: $white;
+      color: $white !important;
+    }
+  }
+
+.my-btn-outline-white {
+    border-color: $white;
+    color: $white !important;
+    &:hover {
+      background-color: $white;
+      color: $black !important;
+    }
+  }
+
+.my-btn-outline-black {
+    border-color: $black;
+    color: $black !important;
+    &:hover {
+      background-color: $black;
+      color: $white !important;
+    }
+  }
+
+.my-btn-outline-yellow {
+    border-color: $yellow;
+    color: $yellow !important;
+    &:hover {
+      background-color: $yellow;
+      color: $black !important;
+    }
+  }
